@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copyrights Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="sidebar close">
+        <div class="logo-details">
+            <i class='bx bxl-c-plus-plus'></i>
+            <span class="logo_name">CodingLab</span>
+        </div>
+        <ul class="nav-links">
+            <button onclick="showSection('authorsSection')">
+                <i class='bx bx-user'></i>
+                <span class="link_name">Authors</span>
+            </button>
+            <button onclick="showSection('publishersSection')">
+                <i class='bx bx-book'></i>
+                <span class="link_name">Publishers</span>
+            </button>
+            <button onclick="showSection('copyrightsSection')">
+                <i class='bx bx-copy-alt'></i>
+                <span class="link_name">Copyrights</span>
+            </button>
+            <button onclick="showSection('royaltiesSection')">
+                <i class='bx bx-dollar-circle'></i>
+                <span class="link_name">Royalties</span>
+            </button>
+            <button onclick="showSection('transactionsSection')">
+                <i class='bx bx-transfer'></i>
+                <span class="link_name">Transactions</span>
+            </button>
+            <button onclick="showSection('penNotebookSection')">
+                <i class='bx bx-pen'></i>
+                <span class="link_name">Pen & Notebook</span>
+            </button>
+        </ul>
+    </div>
+
+    <div id="main-content">
+        <div id="authorsSection" style="display:none;">
+            <!-- Authors Form -->
+            <h3>Add Author</h3>
+            <form id="authorsForm" onsubmit="addAuthor(event)">
+                <div class="input-texts" style="width: 90%">
+                    <label for="authorID">ID:</label>
+                    <input type="text" id="authorID" name="id" required>
+                    <label for="authorName">Name:</label>
+                    <input type="text" id="authorName" name="name" required>
+                    <label for="authorNationality">Nationality:</label>
+                    <input type="text" id="authorNationality" name="nationality" required>
+                    <button type="submit">Add Author</button>
+                </div>
+            </form>
+            
+            <!-- Authors Table -->
+            <h3>Authors</h3>
+            <table id="authorsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Nationality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Existing authors data can be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="publishersSection" style="display:none;">
+            <!-- Publishers Form -->
+            <h3>Add Publisher</h3>
+            <form id="publishersForm">
+                <div class="input-texts" style="width: 90%">
+                    <label for="publisherID">ID:</label>
+                    <input type="text" id="publisherID" name="id" required>
+                    <label for="publisherName">Name:</label>
+                    <input type="text" id="publisherName" name="name" required>
+                    <label for="publisherType">Type:</label>
+                    <input type="text" id="publisherType" name="type" required>
+                    <label for="publisherIndustry">Industry:</label>
+                    <input type="text" id="publisherIndustry" name="industry" required>
+                    <button type="submit">Add Publisher</button>
+                </div>
+            </form>
+
+            <!-- Publishers Table -->
+            <h3>Publishers</h3>
+            <table id="publishersTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Industry</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Existing publishers data can be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="copyrightsSection" style="display:none;">
+            <!-- Copyrights Form -->
+            <h3>Add Copyright Agreement</h3>
+            <div class="input-texts" style="width: 90%">
+                <form id="copyrightsForm">
+                    <label for="copyrightID">ID:</label>
+                    <input type="text" id="copyrightID" name="id" required>
+                    <label for="copyrightStartDate">Start Date:</label>
+                    <input type="date" id="copyrightStartDate" name="startDate" required>
+                    <label for="copyrightEndDate">End Date:</label>
+                    <input type="date" id="copyrightEndDate" name="endDate" required>
+                    <label for="royaltyPercentage">Royalty Percentage:</label>
+                    <input type="number" id="royaltyPercentage" name="royaltyPercentage" min="0" max="100" step="0.01" required>
+                    <label for="termsAndConditions">Terms And Conditions:</label>
+                    <textarea id="termsAndConditions" name="termsAndConditions" required></textarea>
+                    <label for="territoryCovered">Territory Covered:</label>
+                    <input type="text" id="territoryCovered" name="territoryCovered" required>
+                    <label for="exclusiveRights">Exclusive/Non-Exclusive:</label>
+                    <select id="exclusiveRights" name="exclusiveNonExclusive" required>
+                        <option value="Exclusive">Exclusive</option>
+                        <option value="Non-Exclusive">Non-Exclusive</option>
+                    </select>
+                    <label for="creatorID">Creator ID:</label>
+                    <input type="number" id="creatorID" name="creatorID" required>
+                    <label for="publicationID">Publication ID:</label>
+                    <input type="number" id="publicationID" name="publicationID" required>
+                    <button type="submit">Add Copyright Agreement</button>
+                </form>
+            </div>
+
+            <!-- Copyrights Table -->
+            <h3>Copyright Agreements</h3>
+            <table id="copyrightsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Royalty Percentage</th>
+                        <th>Terms And Conditions</th>
+                        <th>Territory Covered</th>
+                        <th>Exclusive/Non-Exclusive</th>
+                        <th>Creator ID</th>
+                        <th>Publication ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Existing copyrights data can be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="royaltiesSection" style="display:none;">
+            <!-- Royalties Form -->
+            <h3>Add Royalty Payment</h3>
+            <div class="input-texts" style="width: 90%">
+                <form id="royaltiesForm">
+                    <label for="royaltyPaymentID">ID:</label>
+                    <input type="text" id="royaltyPaymentID" name="id" required>
+                    <label for="royaltyDate">Date:</label>
+                    <input type="date" id="royaltyDate" name="date" required>
+                    <label for="royaltyAmount">Amount:</label>
+                    <input type="number" id="royaltyAmount" name="amount" step="0.01" required>
+                    <label for="royaltyCurrency">Currency:</label>
+                    <input type="text" id="royaltyCurrency" name="currency" required>
+                    <label for="royaltyAgreementID">Agreement ID:</label>
+                    <input type="text" id="royaltyAgreementID" name="agreementID" required>
+                    <button type="submit">Add Royalty Payment</button>
+                </form>
+            </div>
+            
+
+            <!-- Royalties Table -->
+            <h3>Royalty Payments</h3>
+            <table id="royaltiesTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Currency</th>
+                        <th>Agreement ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Existing royalties data can be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="transactionsSection" style="display:none;">
+            <!-- Transactions Form -->
+            <h3>Add Financial Transaction</h3>
+            <div class="input-texts" style="width: 90%">
+                <form id="transactionsForm">
+                    <label for="transactionID">ID:</label>
+                    <input type="text" id="transactionID" name="id" required>
+                    <label for="transactionDate">Date:</label>
+                    <input type="date" id="transactionDate" name="date" required>
+                    <label for="transactionAmount">Amount:</label>
+                    <input type="number" id="transactionAmount" name="amount" step="0.01" required>
+                    <label for="transactionType">Type:</label>
+                    <input type="text" id="transactionType" name="type" required>
+                    <label for="transactionDescription">Description:</label>
+                    <textarea id="transactionDescription" name="description" required></textarea>
+                    <label for="transactionAgreementID">Agreement ID:</label>
+                    <input type="text" id="transactionAgreementID" name="agreementID" required>
+                    <button type="submit">Add Financial Transaction</button>
+                </form>
+            </div>
+            
+
+            <!-- Transactions Table -->
+            <h3>Financial Transactions</h3>
+            <table id="transactionsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Agreement ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Existing transactions data can be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- New Pen & Notebook Section -->
+        <div id="penNotebookSection" style="display:none;">
+            <h3>Search Copyright Agreement</h3>
+            <form id="penNotebookForm" onsubmit="searchCopyright()">
+                <div class="input-texts" style="width: 90%">
+                    <label for="penNotebookID">ID:</label>
+                    <input type="text" id="penNotebookID" name="id" required>
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+            <div id="penNotebookDetails" style="display:none;">
+                <h3>Copyright Agreement Details</h3>
+                <div id="penNotebookDetailsContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Function to handle the search for copyright agreement
+        function searchCopyright() {
+            const penNotebookID = document.getElementById('penNotebookID').value;
+            // Assuming you have a function to fetch and display copyright details based on ID
+            fetchAndDisplayDetails(penNotebookID);
+        }
+
+        // Function to fetch and display details
+        function fetchAndDisplayDetails(id) {
+            const detailsDiv = document.getElementById('penNotebookDetailsContent');
+            detailsDiv.innerHTML = '<p>Loading...</p>';
+
+            // Example code for fetching data (replace with actual implementation)
+            setTimeout(() => {
+                const agreementDetails = {
+                    id: id,
+                    startDate: '2022-01-01',
+                    endDate: '2023-12-31',
+                    royaltyPercentage: '10%',
+                    termsAndConditions: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    territoryCovered: 'Worldwide',
+                    exclusiveNonExclusive: 'Exclusive',
+                    creatorID: '123',
+                    publicationID: '456'
+                };
+
+                const detailsHTML = `
+                    <p>ID: ${agreementDetails.id}</p>
+                    <p>Start Date: ${agreementDetails.startDate}</p>
+                    <p>End Date: ${agreementDetails.endDate}</p>
+                    <p>Royalty Percentage: ${agreementDetails.royaltyPercentage}</p>
+                    <p>Terms And Conditions: ${agreementDetails.termsAndConditions}</p>
+                    <p>Territory Covered: ${agreementDetails.territoryCovered}</p>
+                    <p>Exclusive/Non-Exclusive: ${agreementDetails.exclusiveNonExclusive}</p>
+                    <p>Creator ID: ${agreementDetails.creatorID}</p>
+                    <p>Publication ID: ${agreementDetails.publicationID}</p>
+                `;
+                detailsDiv.innerHTML = detailsHTML;
+                document.getElementById('penNotebookDetails').style.display = 'block';
+            }, 1000); // Simulating a delay for fetching data
+        }
+
+        // Function to show/hide sections
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('#main-content > div');
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        // Sidebar toggle
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+
+
+        // Function to add an author
+    
+        function addAuthor(event) {
+    event.preventDefault(); // Prevent default form submission
+    const authorID = document.getElementById('authorID').value;
+    const authorName = document.getElementById('authorName').value;
+    const authorNationality = document.getElementById('authorNationality').value;
+
+    // Make a POST request to the backend endpoint
+    fetch('/add_author', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: authorID,
+            name: authorName,
+            nationality: authorNationality
+        }),
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Author added successfully');
+            // Optionally, reset the form or perform any UI update
+        } else {
+            console.error('Error adding author:', response.statusText);
+            alert('Error adding author. Please try again later.');
+        }
+    })
+    .catch(error => {
+        console.error('Error adding author:', error);
+        alert('Error adding author. Please try again later.');
+    });
+}
+    
+    
+    </script>
+</body>
+</html>
